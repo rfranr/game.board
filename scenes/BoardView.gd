@@ -10,7 +10,7 @@ var game_controller: Node = null
 func _ready() -> void:
     print("BoardView is ready")
     if game_controller == null:
-        game_controller = get_node("/root/GameController")
+        game_controller = get_node("/root/Main/Node")
     pass # Replace with function body.
 
 

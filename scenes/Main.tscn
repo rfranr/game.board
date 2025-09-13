@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6ysvygpub2lc"]
 
-[ext_resource type="Script" uid="uid://b5mxh0qrn2o3a" path="res://app/game_controller.gd" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://cei882wkr4i0p" path="res://app/startup_controller.gd" id="1_elqb8"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Node" type="Node" parent="."]
-script = ExtResource("2_0bbpv")
+script = ExtResource("1_elqb8")

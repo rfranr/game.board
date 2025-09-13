@@ -4,8 +4,13 @@ class_name ScenesController
 const MAIN_MENU_SCN: PackedScene = preload("res://scenes/MainMenu.tscn")
 const BOARD_SCN: PackedScene     = preload("res://scenes/BoardView.tscn")
 
+
 var scenes: Array = []
 var root_node: Node = null
+var host: Node = null
+
+func _init(_host: Node) -> void:
+	self.host = _host
 
 func _ready() -> void:
 	print("ScenesController is ready")
@@ -21,7 +26,7 @@ func _close_all_scenes() -> void:
 
 func _set_scene(scene: Node) -> void:
 	_close_all_scenes()
-	root_node.add_child(scene)
+	host.add_child(scene)
 	scenes.append(scene)
 	print("Scene set and connected.")
 

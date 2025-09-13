@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx61su65pgfut"]
+
+[ext_resource type="Script" uid="uid://dos8ri47txyv6" path="res://scenes/BoardView.gd" id="1_1m7ec"]
+
+[node name="BoardView" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_1m7ec")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-1, -1, 17, 12, 27, 23, 44, 41, 61, 68, 64, 133, 110, 185, 218, 151, 205, 109, 196, 43, 279, 10, 445, 120, 530, 239)

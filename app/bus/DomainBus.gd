@@ -3,8 +3,6 @@ extends Node
 ## It allows different parts of the application to communicate
 ## without direct references to each other.
 
-
-
 signal cmd_start_game()
 signal cmd_end_game()
 signal cmd_reset_game()

@@ -14,7 +14,7 @@ var pieces: Array = []
 var scenes: Array = []
 
 func _ready():
-    AppBus.cmd_start_game.connect(_on_start_game)
+    DomainBus.cmd_start_game.connect(_on_start_game)
 
     # Initialize the pieces array with some pieces
     pieces.append(Piece.new(1, Piece.eColor.WHITE, Vector2i(0, 0)))
@@ -26,10 +26,8 @@ func _ready():
 func _on_start_game() -> void:
     print("Starting new game...")
     domain.new_game()
-    AppBus.evt_game_started.emit()
+    DomainBus.evt_game_started.emit()
     pass
-
-
 
 func _on_cell_pressed(cell_position: Vector2i) -> void:
     print("Cell pressed at position: ", cell_position)
@@ -39,11 +37,9 @@ func _on_piece_pressed(piece_id: int) -> void:
     print("Piece pressed with ID: ", piece_id)
     pass
 
-
-
-
-
-
-## func _process(delta: float) -> void:
-##     print("Updating game state...", delta)
-##     pass    
+## when user pres keyboard C then open config scene
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("open_config"):   # or is_action_released/just_pressed
+        var sc: ScenesController = DependencyHelper.get_instance("scenes_controller")
+        if sc:
+            sc.toggle_config_scene()

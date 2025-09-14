@@ -27,6 +27,8 @@ func _ready() -> void:
 	DependencyHelper.set_instance("game_controller", game_controller)
 
 
+    
+
 
 	scenes_controller.open_main_menu()
 	pass # Replace with function body.

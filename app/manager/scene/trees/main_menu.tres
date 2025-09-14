@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SceneSpec" load_steps=3 format=3 uid="uid://dvf1lav5mp7q6"]
+
+[ext_resource type="PackedScene" uid="uid://b0kfdic4sl73h" path="res://scenes/MainMenu.tscn" id="1_71akw"]
+[ext_resource type="Script" uid="uid://beia3rp1n2cbq" path="res://app/manager/scene/scene_spec.gd" id="2_lsrc2"]
+
+[resource]
+script = ExtResource("2_lsrc2")
+name = "MainMenu"
+packed = ExtResource("1_71akw")

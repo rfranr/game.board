@@ -9,7 +9,7 @@ var game_controller: Node = null
 
 func _ready() -> void:
     print("BoardView is ready")
-    AppBus.cmd_start_game.emit()
+    DomainBus.cmd_start_game.emit()
     pass # Replace with function body.
 
 

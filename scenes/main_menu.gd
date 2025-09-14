@@ -6,10 +6,16 @@ extends Node2D
 @onready var game_controller: GameController = DependencyHelper.get_instance("game_controller") as GameController
 
 func _ready() -> void:
-	print("MainMenu is ready")
+    print("MainMenu is ready")
 
-	start_button.pressed.connect(func() -> void:
-		print("Start button pressed")
-		scenes_controller.open_board_scene()
-		# Here you can add logic to start the game, e.g., switch to the game scene
-	)
+    start_button.pressed.connect(func() -> void:
+        print("Start button pressed")
+        scenes_controller.open_board_scene()
+        # Here you can add logic to start the game, e.g., switch to the game scene
+    )
+
+    scenes_controller.connect("scene_changed", Callable(self, "_on_scene_changed"))
+
+
+func _on_scene_changed(new_scene: Node) -> void:
+    print("Scene changed to: ", new_scene.name)

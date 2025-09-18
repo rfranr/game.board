@@ -33,6 +33,14 @@ func _process(delta: float) -> void:
 
 
 
-func _on_piece_added(id: int, position: int) -> void:
-    print("BoardView: Piece added with ID: ", id, " at position: ", position)
+func _on_piece_added(id: int, x:int, y:int) -> void:
+    print("BoardView: Piece added with ID: ", id, " at position: ", x, ", ", y)
+
+    # Can i draw something on the board? maybe a pixel ?
+    var pixel = ColorRect.new()
+    pixel.color = Color(1, 0, 0)  
+    pixel.size = Vector2(10, 10)
+    pixel.position = Vector2(x,y)  
+    add_child(pixel)
+
     # Here you can add logic to update the board view based on the new piece

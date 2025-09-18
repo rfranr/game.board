@@ -2,5 +2,10 @@
     "godotTools.editorPath.godot4": "/home/rfranr/bin/Godot_v4.4.1-stable_linux.x86_64",
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "files.exclude": {
+        "**/*.uid": true,
+        "**/.godot": true,
+        "**/.import": true
+    }
 }

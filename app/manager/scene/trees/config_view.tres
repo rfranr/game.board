@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SceneSpec" load_steps=3 format=3 uid="uid://b51jn4arciwqh"]
+
+[ext_resource type="PackedScene" uid="uid://jm0syv4fuy1l" path="res://scenes/ConfigView.tscn" id="1_rxjug"]
+[ext_resource type="Script" uid="uid://beia3rp1n2cbq" path="res://app/manager/scene/scene_spec.gd" id="2_hs6m6"]
+
+[resource]
+script = ExtResource("2_hs6m6")
+name = ""
+packed = ExtResource("1_rxjug")
+is_singleton = false
+close_others = false
+is_modal = true
+is_pausable = false
+metadata/_custom_type_script = "uid://beia3rp1n2cbq"

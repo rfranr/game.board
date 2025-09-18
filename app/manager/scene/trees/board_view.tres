@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SceneSpec" load_steps=3 format=3 uid="uid://cd8iyr45qambd"]
+
+[ext_resource type="Script" uid="uid://beia3rp1n2cbq" path="res://app/manager/scene/scene_spec.gd" id="1_d8ilc"]
+[ext_resource type="PackedScene" uid="uid://cx61su65pgfut" path="res://scenes/BoardView.tscn" id="1_wx5ls"]
+
+[resource]
+script = ExtResource("1_d8ilc")
+name = ""
+packed = ExtResource("1_wx5ls")
+is_singleton = true
+close_others = true
+is_modal = false
+metadata/_custom_type_script = "uid://beia3rp1n2cbq"

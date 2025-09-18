@@ -10,6 +10,8 @@ signal cmd_undo_move()
 signal cmd_redo_move()
 signal cmd_quit_game()
 signal cmd_load_scene(scene_name: String)
+signal cmd_toggle_pause(is_paused: bool)
+signal cmd_game_over(winner: String)
 ##
 signal evt_game_started()
 signal evt_game_ended()

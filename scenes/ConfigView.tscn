@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://jm0syv4fuy1l"]
+[gd_scene load_steps=2 format=3 uid="uid://jm0syv4fuy1l"]
+
+[ext_resource type="Script" uid="uid://d0l8rdbh46j4c" path="res://scenes/config_view.gd" id="1_33f5m"]
 
 [node name="ConfigView" type="Control"]
 layout_mode = 3
@@ -7,8 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_33f5m")
 
 [node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
 offset_right = 209.0
 offset_bottom = 81.0
 item_count = 2
@@ -16,3 +20,13 @@ popup/item_0/text = "Item a"
 popup/item_0/id = 0
 popup/item_1/text = "Item B"
 popup/item_1/id = 1
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.025
+anchor_bottom = 0.07
+offset_left = 3.0
+offset_top = 83.0
+offset_right = 178.2
+offset_bottom = 89.64

@@ -7,3 +7,5 @@ class_name SceneSpec
 @export var packed: PackedScene
 @export var is_singleton: bool = true
 @export var close_others: bool = true
+@export var is_modal: bool = false
+@export var is_pausable: bool = true

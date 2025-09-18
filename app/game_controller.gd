@@ -1,10 +1,8 @@
 extends Node
 class_name GameController
 
-
 # Import the Piece class from domain/piece.gd
 const Piece = preload("res://domain/piece.gd")
-#const Domain = preload("res://domain/domain.gd")
 var domain: Domain = Domain.new()
 
 # Array to hold the state of all pieces
@@ -13,8 +11,13 @@ var pieces: Array = []
 # Array to hold the scenes loaded
 var scenes: Array = []
 
+var handlers = {
+    DomainEvent.Type.PAUSE: PauseEventHandler.handle,
+    DomainEvent.Type.GAME_OVER: GameOverEventHandler.handle,
+    # Add more event types and their handlers as needed
+}
+
 func _ready():
-    DomainBus.cmd_start_game.connect(_on_start_game)
 
     # Initialize the pieces array with some pieces
     pieces.append(Piece.new(1, Piece.eColor.WHITE, Vector2i(0, 0)))
@@ -23,23 +26,27 @@ func _ready():
     for piece in pieces:
         print("Piece ", piece.id, " color: ", piece.color, " position: ", piece.position)
 
-func _on_start_game() -> void:
-    print("Starting new game...")
-    domain.new_game()
-    DomainBus.evt_game_started.emit()
-    pass
+func _process(delta: float) -> void:
+    while not domain.game_event_queue.is_empty():
+        var event = domain.game_event_queue.dequeue()
+        if event.type in handlers:
+            handlers[event.type].call(event)
+        else:
+            print("Unknown event in game controller:", event.type)
 
-func _on_cell_pressed(cell_position: Vector2i) -> void:
-    print("Cell pressed at position: ", cell_position)
-    pass
-
-func _on_piece_pressed(piece_id: int) -> void:
-    print("Piece pressed with ID: ", piece_id)
-    pass
-
-## when user pres keyboard C then open config scene
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("open_config"):   # or is_action_released/just_pressed
+    if event.is_action_pressed("open_config"):   
         var sc: ScenesController = DependencyHelper.get_instance("scenes_controller")
         if sc:
-            sc.toggle_config_scene()
+            sc.open_config_scene()
+    if event.is_action_pressed("open_main"):
+        var sc: ScenesController = DependencyHelper.get_instance("scenes_controller")
+        if sc:
+            sc.open_main_menu()
+    if event.is_action_pressed("pause_game"):
+        domain.pause_game()
+    if event.is_action_pressed("game_over"):
+        domain.end_game("Player 1")  # Example winner name
+    pass
+
+

@@ -17,5 +17,8 @@ func _ready() -> void:
     scenes_controller.connect("scene_changed", Callable(self, "_on_scene_changed"))
 
 
-func _on_scene_changed(new_scene: Node) -> void:
-    print("Scene changed to: ", new_scene.name)
+func _on_scene_changed(scene: Node, new_scene: Node):
+    if scene:
+        print("Scene changed from: ", scene.name, " to: ", new_scene.name)
+    else:
+        print("Scene changed to: ", new_scene.name)

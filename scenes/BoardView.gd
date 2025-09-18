@@ -5,12 +5,14 @@ var game_controller: Node = null
 
 var children_lines: Array = []
 
-## signal cell_pressed(cell_position: Vector2i)
-## signal piece_pressed(piece_id: int) 
 
 func _ready() -> void:
     print("BoardView is ready")
     DomainBus.cmd_start_game.emit()
+
+    # consume domain events
+    DomainBus.evt_piece_added.connect(_on_piece_added)
+
 
     # get child Line2D nodes and print their names
     for child in get_children():
@@ -26,5 +28,11 @@ func _process(delta: float) -> void:
         line.rotation += delta  # Rotate each line slightly each frame
         line.width = 2 + 2 * abs(sin(delta / 1000.0))  # Vary width over time
 
+
     pass # Replace with function body.
 
+
+
+func _on_piece_added(id: int, position: int) -> void:
+    print("BoardView: Piece added with ID: ", id, " at position: ", position)
+    # Here you can add logic to update the board view based on the new piece

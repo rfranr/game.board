@@ -1,9 +1,11 @@
 extends Object
 class_name Domain
+
 var board_size: Vector2i = Vector2i(8, 8)
 var pieces: Array = []
 var game_state: GameState = GameState.new()
 var game_event_queue: DomainEventQueue = DomainEventQueue.new()
+var num_pieces: int = 0
 
 func _init() -> void:
     print("Domain initialized with board size: ", board_size)
@@ -34,3 +36,19 @@ func end_game(winner: String) -> void:
     var event = GameOverEvent.new(winner)
     game_event_queue.enqueue(DomainEvent.new(DomainEvent.Type.GAME_OVER, {"result": event}, bump_version()))
     # Implement end game logic
+
+func add_piece(piece: Dictionary) -> void:
+    pieces.append(piece)
+    print("Piece added. Total pieces: ", pieces.size())
+
+    var event = PieceAddedEvent.new(piece.id, piece.position)
+    game_event_queue.enqueue(DomainEvent.new(DomainEvent.Type.PIECE_ADDED, {"piece": event}, bump_version()))
+
+    pass
+
+func add_pieces(number: int) -> void:
+    for i in range(number):
+        num_pieces += 1
+        var piece = {"id": num_pieces, "position": 1}
+        add_piece(piece)
+    pass

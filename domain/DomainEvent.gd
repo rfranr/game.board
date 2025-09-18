@@ -1,7 +1,7 @@
 extends RefCounted
 class_name DomainEvent
 
-enum Type { PAUSE, RESUME, GAME_OVER }
+enum Type { PAUSE, RESUME, GAME_OVER, PIECE_ADDED }
 
 var type: Type
 var payload: Dictionary

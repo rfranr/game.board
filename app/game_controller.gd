@@ -11,13 +11,22 @@ var pieces: Array = []
 # Array to hold the scenes loaded
 var scenes: Array = []
 
+# Controllers
+var scenes_controller: ScenesController = null
+
+# Total time elapsed since the game started
+var total_time: float = 0.0
+
 var handlers = {
     DomainEvent.Type.PAUSE: PauseEventHandler.handle,
     DomainEvent.Type.GAME_OVER: GameOverEventHandler.handle,
+    DomainEvent.Type.PIECE_ADDED: PieceAddedEventHandler.handle,
     # Add more event types and their handlers as needed
 }
 
 func _ready():
+    # Initialize the childs controllers
+    scenes_controller = DependencyHelper.get_instance("scenes_controller") as ScenesController
 
     # Initialize the pieces array with some pieces
     pieces.append(Piece.new(1, Piece.eColor.WHITE, Vector2i(0, 0)))
@@ -28,21 +37,27 @@ func _ready():
 
 func _process(delta: float) -> void:
     while not domain.game_event_queue.is_empty():
-        var event = domain.game_event_queue.dequeue()
-        if event.type in handlers:
-            handlers[event.type].call(event)
-        else:
-            print("Unknown event in game controller:", event.type)
+        consume_domain_event()
+
+    total_time += delta
+    # var _total_time = int(total_time)
+    # if ( _total_time % 5 == 0 ):
+    domain.add_pieces(1)
+    pass # Replace with function body.
+
+
+func consume_domain_event() -> void:
+    var event = domain.game_event_queue.dequeue()
+    if event.type in handlers:
+        handlers[event.type].call(event)
+    else:
+        print("Unknown event in game controller:", event.type)
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("open_config"):   
-        var sc: ScenesController = DependencyHelper.get_instance("scenes_controller")
-        if sc:
-            sc.open_config_scene()
+            scenes_controller.open_config_scene()
     if event.is_action_pressed("open_main"):
-        var sc: ScenesController = DependencyHelper.get_instance("scenes_controller")
-        if sc:
-            sc.open_main_menu()
+            scenes_controller.open_main_menu()
     if event.is_action_pressed("pause_game"):
         domain.pause_game()
     if event.is_action_pressed("game_over"):

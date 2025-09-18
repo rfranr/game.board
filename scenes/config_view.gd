@@ -33,12 +33,15 @@ func _on_game_state_changed(new_state: GameControllerState) -> void:
     ## var is_paused: bool = false
     ## var version: int = 0
     ## var num_pieces: int = 0
-    text_edit2.text = "\nVersion: " + str(new_state.version)
-    text_edit2.text += "\nCurrent Turn: " + str(new_state.current_turn)
-    text_edit2.text += "\nScore: " + str(new_state.score)
-    text_edit2.text += "\nIs Game Over: " + str(new_state.is_game_over)
-    text_edit2.text += "\nIs Paused: " + str(new_state.is_paused)
-    text_edit2.text += "\nNum Pieces: " + str(new_state.num_pieces)
+    var lines = [
+        "Version: " + str(new_state.version),
+        "Current Turn: " + str(new_state.current_turn),
+        "Score: " + str(new_state.score),
+        "Is Game Over: " + str(new_state.is_game_over),
+        "Is Paused: " + str(new_state.is_paused),
+        "Num Pieces: " + str(new_state.num_pieces)
+    ]
+    text_edit2.text = "\n" + "\n".join(lines)
 
 
 

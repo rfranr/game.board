@@ -8,6 +8,7 @@ var score: Dictionary = {"player1": 0, "player2": 0}
 var is_game_over: bool = false
 var is_paused: bool = false
 var version: int = 0
+var num_pieces: int = 0
 
 func _init() -> void:
     pass

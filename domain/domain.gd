@@ -5,7 +5,6 @@ var board_size: Vector2i = Vector2i(8, 8)
 var pieces: Array = []
 var game_state: GameState = GameState.new()
 var game_event_queue: DomainEventQueue = DomainEventQueue.new()
-var num_pieces: int = 0
 
 func _init() -> void:
     print("Domain initialized with board size: ", board_size)
@@ -20,7 +19,7 @@ func new_game() -> void:
     pieces.clear()
     print("New game started. Pieces cleared.")
     # Initialize pieces or other game state as needed
-    pass    
+    pass
 
 
 func pause_game() -> void:
@@ -39,7 +38,6 @@ func end_game(winner: String) -> void:
 
 func add_piece(piece: Dictionary) -> void:
     pieces.append(piece)
-    print("Piece added. Total pieces: ", pieces.size())
 
     var event = PieceAddedEvent.new(piece.id, piece.position)
     game_event_queue.enqueue(DomainEvent.new(DomainEvent.Type.PIECE_ADDED, {"piece": event}, bump_version()))
@@ -48,7 +46,9 @@ func add_piece(piece: Dictionary) -> void:
 
 func add_pieces(number: int) -> void:
     for i in range(number):
-        num_pieces += 1
-        var piece = {"id": num_pieces, "position": 1}
+        game_state.num_pieces += 1
+        var _x = randi() % 1000   # % board_size.x
+        var _y = randi() % 1000   # % board_size.y
+        var piece = {"id": game_state.num_pieces, "position": {"x": _x, "y": _y}}
         add_piece(piece)
     pass

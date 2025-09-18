@@ -34,8 +34,9 @@ func _process(delta: float) -> void:
     var batch_size = 5
     if current_queue_size != previous_queue_size:
         print("GameController: Domain event queue size changed from ", previous_queue_size, " to ", current_queue_size)
+        var queue_delta = current_queue_size - previous_queue_size
+        batch_size = int(float(queue_delta) / 10.0) + 10
         previous_queue_size = current_queue_size
-        batch_size = int(float(current_queue_size - previous_queue_size) / 10.0) + 10
 
     # domain.add_pieces(  randi() % 20 )
     domain.add_pieces(  1 )

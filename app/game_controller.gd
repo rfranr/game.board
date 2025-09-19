@@ -62,7 +62,7 @@ func map_domain_state_to_app_state() -> GameControllerState:
 
 
 func consume_domain_event() -> void:
-    ## : TODO: thread safe. var event = domain.game_event_queue.try_dequeue()
+    # TODO: Make thread safe. var event = domain.game_event_queue.try_dequeue()
     var event = domain.game_event_queue.dequeue()
     if event == null:
         return

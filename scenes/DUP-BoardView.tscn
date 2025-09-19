@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1337p2wjdnqk"]
+
+[ext_resource type="Script" uid="uid://dos8ri47txyv6" path="res://scenes/BoardView.gd" id="1_a0cd1"]
+
+[node name="BoardView" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_a0cd1")
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+position = Vector2(393, 86)
+points = PackedVector2Array(57, 23, 141, 135, 115, 66, 197, 56, 180, -15, 106, -48, 57, 22, 105, 187, 230, 282)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_a0cd1")
+
+[node name="Line2D" type="Line2D" parent="Node"]
+position = Vector2(393, 86)
+points = PackedVector2Array(57, 23, 141, 135, 115, 66, 197, 56, 180, -15, 106, -48, 57, 22, 105, 187, 230, 282)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(367, 11)
+rotation = 1.309
+scale = Vector2(0.482113, 0.812281)
+points = PackedVector2Array(-1, -1, 17, 12, 27, 23, 44, 41, 61, 68, 64, 133, 110, 185, 218, 151, 205, 109, 196, 43, 279, 10, 445, 120, 530, 239)

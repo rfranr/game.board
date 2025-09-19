@@ -12,12 +12,15 @@ func _ready() -> void:
     print("StartupController is ready")
 
     # Instantiate ScenesController and add it as a child
-    var scene_host = Node.new()
-    scene_host.name = "SceneHost"
-    add_child(scene_host)
+    # UI host for menus, dialogs, overlays, etc. 2D host for game scenes
+    var ui_host = Node.new()
+    ui_host.name = "UiHost"
+    add_child(ui_host)
+    var scene_host_2d := Node2D.new()
+    scene_host_2d.name = "SceneHost2D"
+    add_child(scene_host_2d)
 
-
-    scenes_controller = ScenesController.new(scene_host)
+    scenes_controller = ScenesController.new(scene_host_2d, ui_host)
     add_child(scenes_controller)
     scenes_controller.name = "ScenesController"
     scenes_controller.add_to_group("scenes_controller")

@@ -5,7 +5,14 @@
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_yqorp")
 
+[node name="Button2" type="Button" parent="."]
+offset_right = 161.0
+offset_bottom = 31.0
+text = "NOTHING"
+
 [node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 2.0
+offset_top = 43.0
+offset_right = 163.0
+offset_bottom = 74.0
 text = "Launch BoardScene"

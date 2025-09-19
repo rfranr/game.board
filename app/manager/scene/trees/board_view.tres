@@ -10,4 +10,6 @@ packed = ExtResource("1_wx5ls")
 is_singleton = true
 close_others = true
 is_modal = false
+is_pausable = true
+type_scene = 1
 metadata/_custom_type_script = "uid://beia3rp1n2cbq"

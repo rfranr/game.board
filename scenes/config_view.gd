@@ -18,6 +18,12 @@ func _ready() -> void:
         label.text = "Number of pieces: " + str(num_pieces) + " Event queue size: " + str(size_queue)
     )
 
+    DomainBus.evt_pieces_added.connect(func(positions: Array[Dictionary]) -> void:
+        num_pieces += positions.size()
+        var size_queue = game_controller.domain.game_event_queue.size()
+        label.text = "Number of pieces: " + str(num_pieces) + " Event queue size: " + str(size_queue)
+    )
+
 
     game_state.connect("is_paused_changed", Callable(self, "_on_game_paused_changed"))
     _update_ui(game_state.is_paused)
